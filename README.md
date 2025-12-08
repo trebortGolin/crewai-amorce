@@ -1,5 +1,9 @@
 # crewai-amorce
 
+[![GitHub](https://img.shields.io/github/stars/trebortGolin/crewai-amorce?style=social)](https://github.com/trebortGolin/crewai-amorce)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Demo](https://img.shields.io/badge/demo-marketplace-success.svg)](https://github.com/trebortGolin/agent-marketplace-demo)
+
 **Secure CrewAI crews with Amorce in 1 decorator**
 
 Add Ed25519 signatures, human-in-the-loop approvals, and A2A compatibility to any CrewAI crew.
