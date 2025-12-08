@@ -1,0 +1,268 @@
+# crewai-amorce
+
+**Secure CrewAI crews with Amorce in 1 decorator**
+
+Add Ed25519 signatures, human-in-the-loop approvals, and A2A compatibility to any CrewAI crew.
+
+---
+
+## 🚀 Quick Start
+
+### Installation
+
+```bash
+pip install crewai-amorce
+```
+
+### Basic Usage (1 Decorator!)
+
+```python
+from crewai import Crew, Agent, Task
+from crewai_amorce import secure_crew
+
+# Define your crew
+researcher = Agent(
+    role='Research Specialist',
+    goal='Find accurate information',
+    backstory='Expert researcher'
+)
+
+writer = Agent(
+    role='Content Writer',
+    goal='Write engaging content',
+    backstory='Experienced writer'
+)
+
+# Secure the entire crew with one decorator
+@secure_crew
+crew = Crew(
+    agents=[researcher, writer],
+    tasks=[research_task, write_task]
+)
+
+# All agent interactions are now cryptographically signed
+result = crew.kickoff()
+```
+
+**That's it!** Your CrewAI crew now has:
+- ✅ Ed25519 cryptographic signatures
+- ✅ Inter-agent authentication
+- ✅ Trust Directory verification
+- ✅ A2A-compatible messages
+- ✅ Audit trail for all interactions
+
+---
+
+## 🛡️ Features
+
+### Crew-Wide Security
+
+Every agent in the crew gets Amorce security automatically:
+
+```python
+from crewai_amorce import secure_crew
+
+@secure_crew
+crew = Crew(
+    agents=[agent1, agent2, agent3],
+    tasks=[task1, task2]
+)
+
+# All 3 agents now:
+# - Have cryptographic identities
+# - Sign all communications
+# - Verify each other's signatures
+```
+
+### Human-in-the-Loop (HITL)
+
+Require human approval for sensitive crew operations:
+
+```python
+from crewai_amorce import secure_crew
+
+@secure_crew(
+    hitl_required=['execute_code', 'make_payment', 'delete_file']
+)
+crew = Crew(
+    agents=[developer_agent, finance_agent],
+    tasks=[code_task, payment_task]
+)
+
+# Crew runs normally, but pauses for approval on sensitive actions
+```
+
+### Secure Individual Agents
+
+Use `SecureAgent` for fine-grained control:
+
+```python
+from crewai_amorce import SecureAgent
+
+henri = SecureAgent(
+    role="Electronics Seller",
+    goal="Maximize profit while maintaining 4.8★ rating",
+    backstory="Professional refurbisher",
+    tools=[inventory_db, pricing_api],
+    hitl_required=['confirm_sale', 'issue_refund']
+)
+
+# Henri's actions require human approval for sales
+```
+
+### A2A Protocol Compatible
+
+All crew communications use A2A format:
+
+```python
+@secure_crew(a2a_compatible=True)
+crew = Crew(agents=[...], tasks=[...])
+
+# Agent-to-agent messages use A2A envelope
+```
+
+---
+
+## 📖 Examples
+
+### Marketplace Demo (Henri - Seller Agent)
+
+See the full [Enhanced Marketplace Demo](../marketplace-demo) showing Henri selling to Sarah.
+
+```python
+from crewai_amorce import SecureAgent
+
+henri = SecureAgent(
+    role="Electronics Reseller",
+    goal="Maximize profit while maintaining 4.8★ rating",
+    backstory="Professional refurbisher with 500+ sales",
+    tools=[
+        inventory_database,      # Check stock & condition
+        pricing_api,            # Real-time market rates
+        shipping_calculator,     # Calculate costs
+        receipt_generator       # Generate signed docs
+    ],
+    hitl_required=['confirm_sale', 'issue_refund'],
+    verbose=True
+)
+
+# Henri autonomously:
+# 1. Receives offer from Sarah
+# 2. Checks Sarah's reputation in Trust Directory
+# 3. Calculates profit margin
+# 4. Requests human approval to sell
+# 5. Generates cryptographically signed receipt
+```
+
+### Multi-Agent Research Crew
+
+```python
+from crewai import Crew, Agent, Task
+from crewai_amorce import secure_crew
+
+# Create agents
+researcher = Agent(
+    role='Senior Researcher',
+    goal='Uncover cutting-edge developments',
+    backstory='Renowned researcher'
+)
+
+analyst = Agent(
+    role='Data Analyst',
+    goal='Analyze research findings',
+    backstory='Statistical expert'
+)
+
+writer = Agent(
+    role='Tech Writer',
+    goal='Create comprehensive reports',
+    backstory='Award-winning writer'
+)
+
+# Secure the crew
+@secure_crew(
+    hitl_required=['publish_report']  # Approval before publishing
+)
+crew = Crew(
+    agents=[researcher, analyst, writer],
+    tasks=[research, analyze, write],
+    verbose=True
+)
+
+# Run with full audit trail
+result = crew.kickoff()
+print(f"Crew ID: {crew.crew_id}")
+print(f"All interactions signed: ✓")
+```
+
+---
+
+## 🔧 Advanced Configuration
+
+### Custom Identity for Crew
+
+```python
+from amorce import IdentityManager
+from crewai_amorce import secure_crew
+
+# Load existing identity
+identity = IdentityManager.load_from_file("crew_identity.pem")
+
+@secure_crew(identity=identity)
+crew = Crew(agents=[...], tasks=[...])
+```
+
+### Inter-Crew Communication
+
+```python
+# Crew A discovers Crew B in Trust Directory
+crew_a.discover_crews(capability='data_analysis')
+
+# Crew A delegates task to Crew B (signed)
+crew_a.delegate_to(crew_b, task='analyze_data')
+```
+
+---
+
+## 🧪 Testing
+
+```bash
+# Run tests
+pytest tests/
+
+# With coverage
+pytest --cov=crewai_amorce tests/
+```
+
+---
+
+## 📚 Documentation
+
+- [Amorce Documentation](https://amorce.io/docs)
+- [CrewAI Documentation](https://docs.crewai.com/)
+- [A2A Protocol](https://a2a-protocol.org/)
+
+---
+
+## 🤝 Contributing
+
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+---
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE)
+
+---
+
+## 🔗 Links
+
+- **Amorce**: [amorce.io](https://amorce.io)
+- **GitHub**: [github.com/amorce/crewai-amorce](https://github.com/amorce/crewai-amorce)
+- **PyPI**: [pypi.org/project/crewai-amorce](https://pypi.org/project/crewai-amorce/)
+- **Issues**: [github.com/amorce/crewai-amorce/issues](https://github.com/amorce/crewai-amorce/issues)
+
+---
+
+**Built with ❤️ by the Amorce team**
