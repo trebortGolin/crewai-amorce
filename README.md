@@ -1,8 +1,8 @@
 # crewai-amorce
 
-[![GitHub](https://img.shields.io/github/stars/trebortGolin/crewai-amorce?style=social)](https://github.com/trebortGolin/crewai-amorce)
+[![GitHub](https://img.shields.io/github/stars/AmorceAATP/crewai-amorce?style=social)](https://github.com/AmorceAATP/crewai-amorce)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Demo](https://img.shields.io/badge/demo-marketplace-success.svg)](https://github.com/trebortGolin/agent-marketplace-demo)
+[![Demo](https://img.shields.io/badge/demo-marketplace-success.svg)](https://github.com/AmorceAATP/agent-marketplace-demo)
 
 **Connect your CrewAI crew to LangChain, n8n, AutoGPT, and major LLMs — in 5 minutes.**
 
