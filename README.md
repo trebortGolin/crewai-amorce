@@ -4,9 +4,11 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Demo](https://img.shields.io/badge/demo-marketplace-success.svg)](https://github.com/trebortGolin/agent-marketplace-demo)
 
-**Secure CrewAI crews with Amorce in 1 decorator**
+**Connect your CrewAI crew to LangChain, n8n, AutoGPT, and major LLMs — in 5 minutes.**
 
-Add Ed25519 signatures, human-in-the-loop approvals, and A2A compatibility to any CrewAI crew.
+The Amorce integration for CrewAI enables cross-framework agent communication with Ed25519 signatures and human-in-the-loop approvals.
+
+👉 **[Register your agent at amorce.io](https://amorce.io/register)**
 
 ---
 
