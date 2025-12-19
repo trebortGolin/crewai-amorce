@@ -1,0 +1,2 @@
+amorce-sdk>=0.2.1
+crewai>=0.1.0

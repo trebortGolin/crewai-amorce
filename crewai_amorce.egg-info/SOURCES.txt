@@ -1,0 +1,13 @@
+README.md
+setup.py
+crewai_amorce/__init__.py
+crewai_amorce/a2a.py
+crewai_amorce/agent.py
+crewai_amorce/decorators.py
+crewai_amorce/tools.py
+crewai_amorce.egg-info/PKG-INFO
+crewai_amorce.egg-info/SOURCES.txt
+crewai_amorce.egg-info/dependency_links.txt
+crewai_amorce.egg-info/requires.txt
+crewai_amorce.egg-info/top_level.txt
+tests/test_basic.py
